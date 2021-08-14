@@ -35,6 +35,8 @@ The apply() method invokes a function and allows to pass arguments as an array.
 
 The bind() function returns a new function allowing us to passany number of arguments in this array.
 
+The three  methods are function.prototype properties, developed by ECMAScript 5 version of javascript development. 
+
 
 ### Bind() Method ###
 
@@ -64,4 +66,57 @@ In the above example of code chunk, Javascript Engine creates a new 'studentName
 
 After a bind() value, we can use the function just like it was any other normal function. We can update the function to accept parameters and pass them as well. We use bind method to call a function with the 'this' value, which refers to the same object which is currently selected. It allows us to easily set which object will be found by the this keyword when a functionor method is invoked.
 
+The bind method create a  new function where 'this' refers to the parameter in the parenthesis. This way the bind method enables calling a function with a specified 'this' value. We can specify calling parameters and connect with the bind method according to requirement. 
 
+
+### Call() Method ###
+
+Call method calls a function with a given 'this' value and arguments can be supplied individually. Just like a 'bind'  method, we can call any function and explicitly specify what 'this' should reference within the calling function. 
+
+The call method accepts additional parameters. It executes the function it was called upon right away. It does not make a copy of the function it is being called upon. Call can be used to invoke a method within an owner object as an  argument/parameter. An object can use a method belonging to another object using call method. 
+
+    '''
+    var studentName =  function (subject, marker) {
+        console.log (this.getStudentName() + ' Passed '+ subject + ' With ' + marks);
+            }
+            ...
+     studentName.call(student, 'Science', 98);
+     '''
+     
+  
+  ### Apply() Method ###
+  
+Apply method serves the same purpose as 'call'. The difference is that Apply expects all the parameters in the form of an array. Call executes faster than 'Apply' because the input parameters are already formatted as per the need for the internal methods. 
+  
+ Call and apply are used when we want to pass a different 'this' value to the function. This means that we want to execute a function as if it were a method of a particular object. 
+
+
+    '''
+    var car = {
+        registrationNumber: "GA12378",
+        brand : "Toyota"
+        displayDetails : function (ownerName) {
+         console.log (ownerName+ , this is your car - "+ this.registrationNumber + " "+ this.brand); }
+         }
+     displaDetails.apply (car, ['Madhavi'];
+     displayDetails.call (car,'Radhika'];
+     
+     '''
+     
+ Call, apply, bind enable us to set the 'this' context and enables to controlthe behavior of 'this' variable. If first argument is null or undefined, the 'this' variable points to the global object, but in case of 'strict' mode, it would be 'undefined'. It is specified in the example code below. 
+ 
+     '''
+     function greet() {
+       return 'Hello ${this.name} }
+       
+     const person = {   name: 'Madhavi Latha' };
+     
+     greet.call (person);
+     greet.apply (person);
+     
+     const greet2 = greet.bind(person);
+     greet2();
+     
+     '''
+     
+      
